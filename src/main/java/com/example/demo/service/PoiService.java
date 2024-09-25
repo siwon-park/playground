@@ -14,6 +14,13 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class PoiService {
 
+    /*
+    * TO-DO
+    * 1) 불린형으로 변경하여 컨트롤러에서 분기처리
+    * 2) 템플릿을 읽은 다음에, 템플릿에 Project의 내용을 기반으로 작성하게 해야함
+    * 3) 최종적으로 작성을 다 하고나면 pdf로 변환
+    */
+
     public void create() {
         FileOutputStream fos = null;
         XWPFDocument documentWord = null;
