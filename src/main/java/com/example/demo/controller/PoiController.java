@@ -28,10 +28,10 @@ public class PoiController {
 //        return "200";
 //    }
 
-    @GetMapping("/readwrite")
-    public String writeDocs() throws Exception {
-        poiService.readAndWrite();
-        return "200";
-    }
+//    @GetMapping("/readwrite")
+//    public String writeDocs() throws Exception {
+//        poiService.readAndWrite();
+//        return "200";
+//    }
 
 }
