@@ -1,9 +1,8 @@
-package com.example.demo.service;
+package com.doconsult.poiapp.service;
 
-import com.example.demo.domain.Project;
-import com.example.demo.repository.ProjectRepository;
+import com.doconsult.poiapp.domain.Project;
+import com.doconsult.poiapp.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.poi.util.IOUtils;
 import org.springframework.stereotype.Service;
 import org.apache.poi.xwpf.usermodel.*;
@@ -15,7 +14,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

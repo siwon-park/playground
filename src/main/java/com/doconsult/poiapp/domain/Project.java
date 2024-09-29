@@ -1,4 +1,4 @@
-package com.example.demo.domain;
+package com.doconsult.poiapp.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
