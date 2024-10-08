@@ -14,10 +14,17 @@ public class PoiController {
 
     private final PoiService poiService;
 
+    // TO-DO: ResponseBody로 수정하여 결과에 따른 리턴 코드 분기화 필요
+    // 200: 성공, 401: Unauthorized (인증 정보 없음), 403: Forbidden (권한 없음), 404: Not Found
     @GetMapping("/create/{pid}")
     public String createWord(@PathVariable long pid) throws Exception {
         poiService.create(pid);
         return "200";
+    }
+
+    @GetMapping("/download")
+    public String downloadFile() {
+        return "";
     }
 
 //    @GetMapping("/read")

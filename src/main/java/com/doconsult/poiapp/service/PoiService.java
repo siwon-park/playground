@@ -4,6 +4,7 @@ import com.doconsult.poiapp.domain.Project;
 import com.doconsult.poiapp.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.poi.util.IOUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.apache.poi.xwpf.usermodel.*;
 
@@ -19,10 +20,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PoiService {
 
+    @Value("${file.template.path}")
+    private String templateFilePath;
+
     private final ProjectRepository projectRepository;
 
     public void create(long pid) throws FileNotFoundException, IOException {
-        FileInputStream fis = new FileInputStream("C:\\Users\\SIWON\\Downloads\\템플릿.docx");
+//        FileInputStream fis = new FileInputStream("C:\\Users\\zow77\\Downloads\\WordTemplate.docx");
+        FileInputStream fis = new FileInputStream(templateFilePath);
         XWPFDocument document = new XWPFDocument(fis);
         List<XWPFParagraph> paragraphs = document.getParagraphs(); // 문서 패러그래프의 정보
         Project project = projectRepository.findById(pid).orElseThrow();
@@ -114,14 +119,14 @@ public class PoiService {
 
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyMMdd");
         String newFileName = "개발완료확인서_" + company + "_" + sdf2.format(finishDate) + ".docx";
-        FileOutputStream fos = new FileOutputStream("C:\\Users\\SIWON\\Downloads\\" + newFileName);
+        FileOutputStream fos = new FileOutputStream("C:\\Users\\zow77\\Downloads\\" + newFileName);
         document.write(fos);
         IOUtils.closeQuietly(fos);
         document.close();
     }
 
     public void readTest() throws FileNotFoundException, IOException {
-        FileInputStream fis = new FileInputStream("C:\\Users\\SIWON\\Downloads\\템플릿.docx");
+        FileInputStream fis = new FileInputStream("C:\\Users\\SIWON\\Downloads\\WordTemplate.docx");
         XWPFDocument document = new XWPFDocument(fis);
 
         // 문서의 모든 단락을 가져옴 -> 단락만 읽음
@@ -144,7 +149,7 @@ public class PoiService {
 
     // 테스트용
     public void readAndWrite() throws FileNotFoundException, IOException {
-        FileInputStream fis = new FileInputStream("C:\\Users\\SIWON\\Downloads\\템플릿.docx");
+        FileInputStream fis = new FileInputStream("C:\\Users\\SIWON\\Downloads\\WordTemplate.docx");
         FileOutputStream fos = new FileOutputStream("C:\\Users\\SIWON\\Downloads\\개발완료확인서_수정.docx");
         XWPFDocument document = new XWPFDocument(fis);
 
